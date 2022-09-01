@@ -5,6 +5,18 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  
+}
+
+.App-link {
+  &:hover{
+    cursor: pointer;
+    background: linear-gradient(lighten($colour-gradup, 10%), lighten($colour-graddown, 10%));
+    @include shadowHover;
+    &.textAver{
+        color: darken($colour-secondary, 100%);
+    }
+}
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,7 +26,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  // background-color: #282c34;
+  background-color: $colour-graddown;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
