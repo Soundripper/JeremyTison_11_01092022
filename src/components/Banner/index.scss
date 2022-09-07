@@ -1,0 +1,28 @@
+.bannerContainer{
+    margin-top : 15px;
+    width: 100%;
+}
+
+.banner {
+    display: flex;
+    flex: 1;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.bannerImg{
+    background-color: black;
+    height: 150px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+}
+
+.slogan{
+    text-align: left;
+    position: absolute; 
+    width: 80%;
+    margin: 20px; 
+    color: white;              
+}

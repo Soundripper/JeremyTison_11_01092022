@@ -1,0 +1,19 @@
+@import '../../main.scss';
+
+.footerContainer{
+    background-color: black;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 13px;
+}
+
+.logoFooter{
+    width: 100px;
+}
+
+.copyright{
+    color: $colour-secondary
+}

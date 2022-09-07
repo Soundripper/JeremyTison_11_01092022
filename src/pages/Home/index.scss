@@ -1,0 +1,8 @@
+@import '../../main.scss';
+
+.cardsContainer{
+    display: flex;
+    flex-flow: wrap;
+    flex: 1;
+    justify-content: space-around;
+}

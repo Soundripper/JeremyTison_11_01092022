@@ -1,0 +1,15 @@
+@import '../../main.scss';
+
+.tag{
+    width : 80px;
+    height: 25px;
+    background-color: $colour-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.tagName{
+    color: $colour-secondary;
+}
