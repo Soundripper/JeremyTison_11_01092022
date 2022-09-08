@@ -1,4 +1,4 @@
-import Banner from '../../components/Banner';
+import Carrousel from '../../components/Carrousel';
 import { useEffect } from 'react';
 import './index.scss'
 import Tag from "../../components/Tag"
@@ -10,9 +10,17 @@ function HouseDetails() {
         window.scrollTo(0, 0)
       }, [])
 
+    const slides = [
+        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"},
+        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-2.jpg"},
+        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-3.jpg"},
+        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-4.jpg"},
+        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-5.jpg"},
+    ]
+
     return (
         <div>
-            <Banner />
+            <Carrousel slides = {slides}/>
             <div className='detailsContainer'>
                 <div className='detaislAndTagsContainer'>
                     <h2>Paris center, on the romantic Canal Saint-Martin</h2>
