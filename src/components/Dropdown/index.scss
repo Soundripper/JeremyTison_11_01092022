@@ -1,0 +1,53 @@
+@import '../../main.scss';
+
+.dropDownContainer{
+    display: flex;
+    flex-direction : column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+    .dropDownContainer{
+        display: flex;
+    }
+}
+
+.dropDownContainer--Button {
+    position: relative;
+    background-color: $colour-primary;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.dropTitle{
+    color: $colour-secondary;
+    margin-left: 10px;
+}
+
+.arrow{
+    width : 20px;
+    margin-left: auto;
+    margin-right : 15px;
+}
+
+.dropdDownDetails{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(227, 227, 227);
+    transform: translateY(-35px);
+    & h4{
+        margin: 0;
+        padding: 0;
+    }
+}

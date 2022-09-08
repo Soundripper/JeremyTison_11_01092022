@@ -1,0 +1,15 @@
+@import '../../main.scss';
+
+.errorMessageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.returnLink{
+    color: $colour-primary;
+    font-size : 12px;
+    margin-top : 50px;
+}

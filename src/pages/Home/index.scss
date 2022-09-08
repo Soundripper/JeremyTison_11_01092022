@@ -1,0 +1,19 @@
+@import '../../main.scss';
+
+.cardsContainer{
+    display: flex;
+    flex-flow: wrap;
+    flex: 1;
+    justify-content: space-around;
+    margin-top: 0px;
+}
+
+@media screen and (min-width: 576px){
+    .cardsContainer{
+        margin-top: 15px;
+    }
+}
+
+// .bannerImg{
+//     height: 150px;
+// }
