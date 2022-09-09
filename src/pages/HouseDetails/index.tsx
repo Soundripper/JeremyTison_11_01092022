@@ -6,6 +6,7 @@ import './index.scss'
 import Tag from "../../components/Tag"
 import Loader from "../../components/Loader"
 import Dropdown from "../../components/Dropdown"
+import Rating from "../../components/Rating"
 
 function HouseDetails() {
     let params = useParams();
@@ -19,6 +20,7 @@ function HouseDetails() {
     let equipments : any[] = [];
     let owner : any[] = [];
     let ownerPic : any = undefined;
+    let ratingCount : any = undefined;
 
     let currentDataFiltered : any[] = (data.filter((el : any) => el.id === currentHouseId));
     
@@ -33,6 +35,7 @@ function HouseDetails() {
         equipments = currentDataFiltered[0].equipments;
         owner = currentDataFiltered[0].host.name;
         ownerPic = currentDataFiltered[0].host.picture;
+        ratingCount = currentDataFiltered[0].rating;
     }
 
     // console.log(ownerPic);
@@ -59,7 +62,7 @@ function HouseDetails() {
                             </div>
                         </div>
                         <div className='ratingAndOwnerContainer'>
-                            <div className='rating'>X X X X X</div>
+                            <div className='rating'><Rating ratingCount={ratingCount}/></div>
                             <div className='ownerContainer'>
                                 <div className='ownerName'>  <h3>{owner}</h3> </div>
                                 <div className='ownerImg'><img src={ownerPic} alt="" /></div>
