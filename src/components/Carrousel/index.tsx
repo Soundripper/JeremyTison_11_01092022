@@ -5,7 +5,7 @@ import { default as rightArrow } from '../../assets/rightArrow.svg';
 
 
 const Carrousel = ({slides} : any) => {
-
+    
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrevious = () => {
@@ -23,7 +23,7 @@ const Carrousel = ({slides} : any) => {
     return (
         <div className="carrouselContainer">
             <div className="leftArrow" onClick={goToPrevious}><img src={leftArrow} alt={"previous"}/></div>
-            <div className="imageSlide"><img src={slides[currentIndex].url} alt="" /></div>
+            <div className="imageSlide"><img src={slides[currentIndex]} alt="" /></div>
             <div className="rightArrow" onClick={goToNext}><img src={rightArrow} alt={"next"}/></div>
         </div>
     )

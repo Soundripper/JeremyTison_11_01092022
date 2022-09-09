@@ -1,22 +1,19 @@
 import './index.scss'
-// import { useEffect } from 'react';
-// import useFetch from "../../hooks/useFetch"
 import { useNavigate } from "react-router-dom";
 
-// const data = useFetch();
-// console.log(data)
-
 const Card = ({ data } : {data:any}) => {
-    
     let navigate = useNavigate();
     const clickOnCard = () => {
-        navigate(`/HouseDetails/`);
+        navigate(`/HouseDetails/:${data.id}`);
     }
 
     return(
         <div className = "card" onClick={clickOnCard}>
             <div className = "cardTitle">
                 {data.title}
+            </div>
+            <div className='cardImage'>
+                <img src={data.cover} alt="" />
             </div>
         </div>
     )

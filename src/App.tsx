@@ -41,7 +41,7 @@ function App() :any {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
-              <Route path="/HouseDetails" element={<HouseDetails />} />
+              <Route path="/HouseDetails/:id" element={<HouseDetails />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
         </div>

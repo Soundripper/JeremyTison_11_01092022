@@ -1,51 +1,80 @@
+import useFetch from '../../hooks/useFetch'
 import Carrousel from '../../components/Carrousel';
 import { useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import './index.scss'
 import Tag from "../../components/Tag"
+import Loader from "../../components/Loader"
 import Dropdown from "../../components/Dropdown"
 
 function HouseDetails() {
+    let params = useParams();
+    let currentHouseId : any = (params.id);
+    currentHouseId = currentHouseId.substring(1);
 
+    const {data} = useFetch();
+    let slides : any[] = [];
+    let tags : any[] = [];
+    let description : any[] = [];
+    let equipments : any[] = [];
+    let owner : any[] = [];
+    let ownerPic : any = undefined;
+
+    let currentDataFiltered : any[] = (data.filter((el : any) => el.id === currentHouseId));
+    
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
+    
+    if(currentDataFiltered.length > 0){
+        slides = currentDataFiltered[0].pictures;
+        tags = currentDataFiltered[0].tags;
+        description = currentDataFiltered[0].description;
+        equipments = currentDataFiltered[0].equipments;
+        owner = currentDataFiltered[0].host.name;
+        ownerPic = currentDataFiltered[0].host.picture;
+    }
 
-    const slides = [
-        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-1.jpg"},
-        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-2.jpg"},
-        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-3.jpg"},
-        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-4.jpg"},
-        {url: "https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/front-end-kasa-project/accommodation-20-5.jpg"},
-    ]
-
+    // console.log(ownerPic);
+    
+    
     return (
         <div>
-            <Carrousel slides = {slides}/>
-            <div className='detailsContainer'>
-                <div className='detaislAndTagsContainer'>
-                    <h2>Paris center, on the romantic Canal Saint-Martin</h2>
-                    <h3>Paris, île-de-France</h3>
-                    <div className='tagsContainer'>
-                        <Tag />
-                        <Tag />
-                        <Tag />
+            {!(currentDataFiltered.length>0) && (
+                <Loader />
+            )}
+            {(currentDataFiltered.length>0) && (
+                <div>
+                    <Carrousel slides = {slides}/>
+                    <div className='detailsContainer'>
+                        <div className='detaislAndTagsContainer'>
+                                <div>
+                                    <h2>{currentDataFiltered[0].title}</h2>
+                                    <h3>{currentDataFiltered[0].location}</h3>
+                                </div>
+                            <div className='tagsContainer'>
+                                {tags.map((tag, id) => (
+                                    <Tag tag={tag} key={id}/>
+                                ))}
+                            </div>
+                        </div>
+                        <div className='ratingAndOwnerContainer'>
+                            <div className='rating'>X X X X X</div>
+                            <div className='ownerContainer'>
+                                <div className='ownerName'>  <h3>{owner}</h3> </div>
+                                <div className='ownerImg'><img src={ownerPic} alt="" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='dropDownsContainer'>
+                        <Dropdown dropTitle="Description" dropDetails={<h4>{description}</h4>}/>
+                        <Dropdown dropTitle="Equipements" dropDetails={equipments.map((el, index) => (
+                            <h4>{el}</h4>
+                        ))}/>
                     </div>
                 </div>
-                <div className='ratingAndOwnerContainer'>
-                    <div className='rating'>X X X X X</div>
-                    <div className='ownerContainer'>
-                        <div className='ownerName'>  <h3>Alexandre Dumas</h3> </div>
-                        <div className='ownerImg'></div>
-                    </div>
-                </div>
-            </div>
-            <div className='dropDownsContainer'>
-                <Dropdown />
-                <Dropdown />
-            </div>
-
+            )}
         </div>
-        
     )
   }
   

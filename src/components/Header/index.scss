@@ -11,8 +11,13 @@
 }
 
 .logo{
-    width: 120px;
+    width: 15vw;
 }
+// @media screen and (min-width= 576px) {
+//     .logo{
+//         width: 30vw;
+//     }
+// }
 
 .navMenu{
     display: flex;
