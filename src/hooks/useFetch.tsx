@@ -7,6 +7,7 @@ const useFetch = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+      // console.log("toto")
       const getData = async () => {
         setIsLoading(true);
         try {
@@ -22,7 +23,7 @@ const useFetch = () => {
           setIsLoading(false);
         }
       }
-      getData();
+        getData();
     },[])
 
     return(

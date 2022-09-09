@@ -4,25 +4,29 @@
     display : flex;
     position: relative;
     z-index: 1;
-    // flex-direction: row;
     align-content: center;
 }
 
 .imageSlide{
     display: flex;
-    height: 400px;
+    height: 200px;
     width : 100%;
+}
+@media screen and (min-width: 576px){
+    .imageSlide{
+        height: 350px;
+    }
 }
 
 .imageSlide img{
     object-fit: cover;
     width:100%;
-    border-radius: 20px;
+    border-radius: 13px;
 }
 
 .leftArrow, .rightArrow{
     cursor: pointer;
-    width: 100px;
+    width: 50px;
     position: absolute;
     top: 35%;
 }
@@ -35,4 +39,18 @@
 }
 .rightArrow{
     right: 5px;
+}
+@media screen and (min-width : 576px) {
+    .leftArrow{
+        left: 5px;
+    }
+    .rightArrow{
+        right: 5px;
+    }
+    .leftArrow, .rightArrow{
+        cursor: pointer;
+        width: 100px;
+        position: absolute;
+        top: 35%;
+    }
 }

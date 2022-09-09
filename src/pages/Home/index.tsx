@@ -1,19 +1,25 @@
 import './index.scss'
+// import { useLocation } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Banner from '../../components/Banner'
 import Card from '../../components/Card'
+import Loader from '../../components/Loader'
 
 function Home() {
-  let {data} = useFetch();
-  console.log(data);
+  let {data, isLoading} = useFetch();
 
   return (
     <div>
       <Banner />
       <div className='cardsContainer'>
-        {data.map((title, id) => (
-          <Card data={title} key={id}/>
-        ))} 
+        {isLoading && (
+          <Loader />
+        )}
+        {!isLoading && (
+          data.map((house, id) => (
+            <Card data={house} key={id}/>
+          ))
+        )}
       </div>
     </div>
   )

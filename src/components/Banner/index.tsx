@@ -1,13 +1,26 @@
 import './index.scss'
 import '../../main.scss';
 import "../../scss_utils/_mixins.scss";
-import { default as logo } from '../../assets/logo.svg';
+import { useLocation } from 'react-router-dom';
+import bannerHome from '../../assets/banner_home.jpg'
+import bannerAbout from '../../assets/banner_about.jpg'
 
-function Banner() {
+
+const Banner = () => {
+    const location = useLocation();
+    let bannerSource : string = '';
+    console.log(location);
+    if(location.pathname === "/"){
+        bannerSource = bannerHome;
+    }
+    else if (location.pathname === "/about"){
+        bannerSource = bannerAbout;
+    }
+
     return (
         <div className = 'bannerContainer'>
             <div className = 'banner'>
-                <img className="bannerImg" src={logo} alt={"banner"}/>
+                <img className="bannerImg" src={bannerSource} alt={"banner"}/>
                 <h3 className = "slogan">Chez vous, partout et ailleurs</h3>
             </div>
         </div>
