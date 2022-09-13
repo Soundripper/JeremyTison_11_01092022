@@ -38,34 +38,34 @@ function HouseDetails() {
         }
         return (
             <div>
-                    <Carrousel slides = {house.pictures}/>
-                    <div className='detailsContainer'>
-                        <div className='detaislAndTagsContainer'>
-                                <div>
-                                    <h2>{house.title}</h2>
-                                    <h3>{house.location}</h3>
-                                </div>
-                            <div className='tagsContainer'>
-                                {(house.tags).map((tag: any) => (
-                                    <Tag tag={tag}/>
-                                ))}
+                <Carrousel slides = {house.pictures}/>
+                <div className='detailsContainer'>
+                    <div className='detaislAndTagsContainer'>
+                            <div>
+                                <h2>{house.title}</h2>
+                                <h3>{house.location}</h3>
                             </div>
-                        </div>
-                        <div className='ratingAndOwnerContainer'>
-                            <div className='rating'><Rating ratingCount={house.rating}/></div>
-                            <div className='ownerContainer'>
-                                <div className='ownerName'>  <h3>{house.host.name}</h3> </div>
-                                <div className='ownerImg'><img src={house.host.picture} alt="" /></div>
-                            </div>
+                        <div className='tagsContainer'>
+                            {(house.tags).map((tag: any, keyTags: number) => (
+                                <Tag tag={tag} key={keyTags}/>
+                            ))}
                         </div>
                     </div>
-                    <div className='dropDownsContainer'>
-                        <Dropdown dropTitle="Description" dropDetails={<h4>{house.description}</h4>}/>
-                        <Dropdown dropTitle="Equipements" dropDetails={(house.equipments).map((el: any, index: number) => (
-                            <h4>{el}</h4>
-                        ))}/>
+                    <div className='ratingAndOwnerContainer'>
+                        <div className='rating'><Rating ratingCount={house.rating}/></div>
+                        <div className='ownerContainer'>
+                            <div className='ownerName'>  <h3>{house.host.name}</h3> </div>
+                            <div className='ownerImg'><img src={house.host.picture} alt="" /></div>
+                        </div>
                     </div>
                 </div>
+                <div className='dropDownsContainer'>
+                    <Dropdown dropTitle="Description" dropDetails={<h4>{house.description}</h4>}/>
+                    <Dropdown dropTitle="Equipements" dropDetails={(house.equipments).map((el: any, dropDownIndex: number) => (
+                        <h4 key={dropDownIndex}>{el}</h4>
+                    ))}/>
+                </div>
+            </div>
         )
     }    
 
