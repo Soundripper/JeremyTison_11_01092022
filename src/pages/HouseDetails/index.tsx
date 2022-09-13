@@ -1,6 +1,6 @@
-import useFetch from '../../hooks/useFetch'
+import useFetch, { HouseElement } from '../../hooks/useFetch'
 import Carrousel from '../../components/Carrousel';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useLocation } from "react-router-dom";
 import './index.scss'
 import Tag from "../../components/Tag"
@@ -9,94 +9,69 @@ import Dropdown from "../../components/Dropdown"
 import Rating from "../../components/Rating"
 
 function HouseDetails() {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-      }, [])
-
-    // const {state} = useLocation();
-
     let params = useParams();
     let currentHouseId : any = (params.id);
     currentHouseId = currentHouseId.substring(1);
+    const locationState = useLocation().state as any; 
+    const {data} = useFetch((locationState === null));
     
-    ////////// Refecth
-    const {data} = useFetch();
-    let slides : any[] = [];
-    let tags : any[] = [];
-    let description : any[] = [];
-    let equipments : any[] = [];
-    let owner : any[] = [];
-    let ownerPic : any = undefined;
-    let ratingCount : any = undefined;
-    let currentDataFiltered : any[] = (data.filter((el : any) => el.id === currentHouseId));
-    if(currentDataFiltered.length > 0){
-        slides = currentDataFiltered[0].pictures;
-        tags = currentDataFiltered[0].tags;
-        description = currentDataFiltered[0].description;
-        equipments = currentDataFiltered[0].equipments;
-        owner = currentDataFiltered[0].host.name;
-        ownerPic = currentDataFiltered[0].host.picture;
-        ratingCount = currentDataFiltered[0].rating;
-    }
-    console.log(ownerPic);
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
-    ////////// No Refecth
-    // let slides : any[] = [];
-    // let tags : any[] = [];
-    // let description : any[] = [];
-    // let equipments : any[] = [];
-    // let owner : any[] = [];
-    // let ownerPic : any = undefined;
-    // let ratingCount : any = undefined;
-    // let currentDataFiltered : any[] = (data.filter((el : any) => el.id === currentHouseId));
-    // if(currentDataFiltered.length > 0){
-    //     slides = currentDataFiltered[0].pictures;
-    //     tags = currentDataFiltered[0].tags;
-    //     description = currentDataFiltered[0].description;
-    //     equipments = currentDataFiltered[0].equipments;
-    //     owner = currentDataFiltered[0].host.name;
-    //     ownerPic = currentDataFiltered[0].host.picture;
-    //     ratingCount = currentDataFiltered[0].rating;
-    // }
-    // console.log(ownerPic);
-    
-    
-    return (
-        <div>
-            {!(currentDataFiltered.length>0) && (
-                <Loader />
-            )}
-            {(currentDataFiltered.length>0) && (
-                <div>
-                    <Carrousel slides = {slides}/>
+    const [house, setHouse] = useState<HouseElement|null>(null);
+
+    useEffect (() => {
+        if (locationState !== null){
+            setHouse(() => locationState);
+            return;
+        }
+        if (data.length > 0){
+            const currentDataFiltered = (data.filter((el : any) => el.id === currentHouseId)); 
+            setHouse(() => currentDataFiltered.length > 0 ? currentDataFiltered[0] : null);
+        }
+    },[data, currentHouseId, house, locationState])
+
+    const getContent = () => {
+        if (!house) {
+            return (<Loader />)
+        }
+        return (
+            <div>
+                    <Carrousel slides = {house.pictures}/>
                     <div className='detailsContainer'>
                         <div className='detaislAndTagsContainer'>
                                 <div>
-                                    <h2>{currentDataFiltered[0].title}</h2>
-                                    <h3>{currentDataFiltered[0].location}</h3>
+                                    <h2>{house.title}</h2>
+                                    <h3>{house.location}</h3>
                                 </div>
                             <div className='tagsContainer'>
-                                {tags.map((tag, id) => (
-                                    <Tag tag={tag} key={id}/>
+                                {(house.tags).map((tag: any) => (
+                                    <Tag tag={tag}/>
                                 ))}
                             </div>
                         </div>
                         <div className='ratingAndOwnerContainer'>
-                            <div className='rating'><Rating ratingCount={ratingCount}/></div>
+                            <div className='rating'><Rating ratingCount={house.rating}/></div>
                             <div className='ownerContainer'>
-                                <div className='ownerName'>  <h3>{owner}</h3> </div>
-                                <div className='ownerImg'><img src={ownerPic} alt="" /></div>
+                                <div className='ownerName'>  <h3>{house.host.name}</h3> </div>
+                                <div className='ownerImg'><img src={house.host.picture} alt="" /></div>
                             </div>
                         </div>
                     </div>
                     <div className='dropDownsContainer'>
-                        <Dropdown dropTitle="Description" dropDetails={<h4>{description}</h4>}/>
-                        <Dropdown dropTitle="Equipements" dropDetails={equipments.map((el, index) => (
+                        <Dropdown dropTitle="Description" dropDetails={<h4>{house.description}</h4>}/>
+                        <Dropdown dropTitle="Equipements" dropDetails={(house.equipments).map((el: any, index: number) => (
                             <h4>{el}</h4>
                         ))}/>
                     </div>
                 </div>
-            )}
+        )
+    }    
+
+    return (
+        <div>
+            {getContent()}
         </div>
     )
   }

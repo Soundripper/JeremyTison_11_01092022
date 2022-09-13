@@ -8,8 +8,8 @@ export interface HouseElement{
   host: HouseHost;
   rating: string;
   location: string;
-  equipments: string;
-  tags: string;
+  equipments: string[];
+  tags: string[];
 }
 
 export interface HouseHost{
@@ -17,10 +17,8 @@ export interface HouseHost{
   picture: string;
 }
 
-const useFetch = () => {
-  
-
-    const [data, setData] = useState<HouseElement[]>([]);
+const useFetch = (needFetch : boolean = true) => {
+    const [data, setData] = useState([]);
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -40,8 +38,11 @@ const useFetch = () => {
           setIsLoading(false);
         }
       }
+      if (needFetch){
         getData();
-    },[])
+      }
+      
+    },[needFetch])
 
     return(
       {

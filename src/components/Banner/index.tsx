@@ -9,7 +9,7 @@ import bannerAbout from '../../assets/banner_about.jpg'
 const Banner = () => {
     const location = useLocation();
     let bannerSource : string = '';
-    console.log(location);
+    // console.log(location);
     if(location.pathname === "/"){
         bannerSource = bannerHome;
     }
