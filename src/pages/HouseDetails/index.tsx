@@ -1,7 +1,7 @@
 import useFetch from '../../hooks/useFetch'
 import Carrousel from '../../components/Carrousel';
 import { useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import './index.scss'
 import Tag from "../../components/Tag"
 import Loader from "../../components/Loader"
@@ -9,10 +9,17 @@ import Dropdown from "../../components/Dropdown"
 import Rating from "../../components/Rating"
 
 function HouseDetails() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
+    // const {state} = useLocation();
+
     let params = useParams();
     let currentHouseId : any = (params.id);
     currentHouseId = currentHouseId.substring(1);
-
+    
+    ////////// Refecth
     const {data} = useFetch();
     let slides : any[] = [];
     let tags : any[] = [];
@@ -21,13 +28,7 @@ function HouseDetails() {
     let owner : any[] = [];
     let ownerPic : any = undefined;
     let ratingCount : any = undefined;
-
     let currentDataFiltered : any[] = (data.filter((el : any) => el.id === currentHouseId));
-    
-    useEffect(() => {
-        window.scrollTo(0, 0)
-      }, [])
-    
     if(currentDataFiltered.length > 0){
         slides = currentDataFiltered[0].pictures;
         tags = currentDataFiltered[0].tags;
@@ -37,7 +38,26 @@ function HouseDetails() {
         ownerPic = currentDataFiltered[0].host.picture;
         ratingCount = currentDataFiltered[0].rating;
     }
+    console.log(ownerPic);
 
+    ////////// No Refecth
+    // let slides : any[] = [];
+    // let tags : any[] = [];
+    // let description : any[] = [];
+    // let equipments : any[] = [];
+    // let owner : any[] = [];
+    // let ownerPic : any = undefined;
+    // let ratingCount : any = undefined;
+    // let currentDataFiltered : any[] = (data.filter((el : any) => el.id === currentHouseId));
+    // if(currentDataFiltered.length > 0){
+    //     slides = currentDataFiltered[0].pictures;
+    //     tags = currentDataFiltered[0].tags;
+    //     description = currentDataFiltered[0].description;
+    //     equipments = currentDataFiltered[0].equipments;
+    //     owner = currentDataFiltered[0].host.name;
+    //     ownerPic = currentDataFiltered[0].host.picture;
+    //     ratingCount = currentDataFiltered[0].rating;
+    // }
     // console.log(ownerPic);
     
     

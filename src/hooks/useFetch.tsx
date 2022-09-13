@@ -1,13 +1,30 @@
 import {useState, useEffect} from 'react';
+export interface HouseElement{
+  id: string;
+  title: string;
+  cover: string;
+  pictures: string[];
+  description: string;
+  host: HouseHost;
+  rating: string;
+  location: string;
+  equipments: string;
+  tags: string;
+}
+
+export interface HouseHost{
+  name: string;
+  picture: string;
+}
 
 const useFetch = () => {
+  
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<HouseElement[]>([]);
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-      // console.log("toto")
       const getData = async () => {
         setIsLoading(true);
         try {

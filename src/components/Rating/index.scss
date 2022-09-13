@@ -1,4 +1,11 @@
+@import '../../main.scss';
+
 .star{
     width: 30px;
-    color : #dedede;
+    color : $colour-lightGrey;
+}
+@media screen and (max-width : 576px){
+    .star{
+        width: 20px;
+    }
 }

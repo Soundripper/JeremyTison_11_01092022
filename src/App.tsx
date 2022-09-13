@@ -9,31 +9,6 @@ import Footer from './components/Footer';
 
 function App() :any {
 
-    // const [data, setData]= useState([]);
-
-    // const getData=()=>{
-    //   fetch('/data/logements.json'
-    //   ,{
-    //     headers : { 
-    //       'Content-Type': 'application/json',
-    //       'Accept': 'application/json'
-    //      }
-    //   }
-    //   )
-    //     .then(function(response){
-    //       return response.json();
-    //     })
-    //     .then(function(myJson) {
-    //       setData(myJson)
-    //     });
-    // }
-
-    // useEffect(()=>{
-    //   getData()
-    // },[])
-
-    // console.log(data)
-
     return(
       <BrowserRouter>
         <div className="mainWrapper">

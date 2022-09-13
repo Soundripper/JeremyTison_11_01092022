@@ -23,6 +23,11 @@
     text-align: right;
     margin-right: 20px;
 }
+@media screen and (max-width: 576px){
+    .ownerName h3{
+        font-size: 14px;
+    }
+}
 
 .ownerImg img{
     object-fit: cover;
