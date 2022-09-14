@@ -10,16 +10,16 @@ import Rating from "../../components/Rating"
 
 function HouseDetails() {
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     let params = useParams();
     let currentHouseId : any = (params.id);
     currentHouseId = currentHouseId.substring(1);
 
     const locationState = useLocation().state as any; 
     const {data} = useFetch((locationState === null));
-    
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     const [house, setHouse] = useState<HouseElement|null>(null);
 
