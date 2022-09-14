@@ -8,18 +8,22 @@ import Loader from '../../components/Loader'
 function Home() {
   let {data, isLoading} = useFetch();
 
+  const getContent = () => {
+    if (data.length === 0){
+      return <Loader />
+    }
+    return (
+      data.map((house, id) => (
+        <Card house={house} key={id}/>
+      ))
+    )
+  }
+
   return (
     <div>
       <Banner />
       <div className='cardsContainer'>
-        {isLoading && (
-          <Loader />
-        )}
-        {!isLoading && (
-          data.map((house, id) => (
-            <Card data={house} key={id}/>
-          ))
-        )}
+        {getContent()}
       </div>
     </div>
   )

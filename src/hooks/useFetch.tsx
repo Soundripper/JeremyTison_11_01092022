@@ -1,13 +1,28 @@
 import {useState, useEffect} from 'react';
+export interface HouseElement{
+  id: string;
+  title: string;
+  cover: string;
+  pictures: string[];
+  description: string;
+  host: HouseHost;
+  rating: string;
+  location: string;
+  equipments: string[];
+  tags: string[];
+}
 
-const useFetch = () => {
+export interface HouseHost{
+  name: string;
+  picture: string;
+}
 
+const useFetch = (needFetch : boolean = true) => {
     const [data, setData] = useState([]);
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-      // console.log("toto")
       const getData = async () => {
         setIsLoading(true);
         try {
@@ -23,8 +38,11 @@ const useFetch = () => {
           setIsLoading(false);
         }
       }
+      if (needFetch){
         getData();
-    },[])
+      }
+      
+    },[needFetch])
 
     return(
       {

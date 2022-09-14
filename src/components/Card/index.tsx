@@ -1,19 +1,24 @@
 import './index.scss'
 import { useNavigate } from "react-router-dom";
+import { HouseElement } from '../../hooks/useFetch';
+interface CardProps {
+    house: HouseElement
+}
 
-const Card = ({ data } : {data:any}) => {
-    let navigate = useNavigate();
+const Card = (props: CardProps) => {
+    const {house} = props
+    const navigate = useNavigate();
     const clickOnCard = () => {
-        navigate(`/HouseDetails/:${data.id}`);
+        navigate((`/HouseDetails/:${house.id}`), {state : house});
     }
 
     return(
         <div className = "card" onClick={clickOnCard}>
             <div className = "cardTitle">
-                {data.title}
+                {house.title}
             </div>
             <div className='cardImage'>
-                <img src={data.cover} alt="" />
+                <img src={house.cover} alt="" />
             </div>
         </div>
     )

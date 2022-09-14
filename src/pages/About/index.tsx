@@ -29,7 +29,7 @@ function About() {
         <Banner />
         <div className='dropDownsWrapper'>
             {aboutList.map((dropD, index) => (
-              <Dropdown key={index} dropTitle={dropD.id} dropDetails={dropD.content} /> 
+              <Dropdown key={index} dropTitle={dropD.id} dropDetails={<h4>{dropD.content}</h4>} /> 
             ))}
         </div>
       </div>
