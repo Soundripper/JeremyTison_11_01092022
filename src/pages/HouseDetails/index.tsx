@@ -9,9 +9,11 @@ import Dropdown from "../../components/Dropdown"
 import Rating from "../../components/Rating"
 
 function HouseDetails() {
+
     let params = useParams();
     let currentHouseId : any = (params.id);
     currentHouseId = currentHouseId.substring(1);
+
     const locationState = useLocation().state as any; 
     const {data} = useFetch((locationState === null));
     
@@ -23,7 +25,7 @@ function HouseDetails() {
 
     useEffect (() => {
         if (locationState !== null){
-            setHouse(() => locationState);
+            setHouse(locationState);
             return;
         }
         if (data.length > 0){

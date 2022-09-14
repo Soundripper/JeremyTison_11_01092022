@@ -21,8 +21,6 @@ const aboutList = [
   },
 ]
 
-
-
 function About() {
     return (
       <div>

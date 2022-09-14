@@ -9,7 +9,7 @@ function Home() {
   let {data, isLoading} = useFetch();
 
   const getContent = () => {
-    if (data.length === 0){
+    if (isLoading){
       return <Loader />
     }
     return (

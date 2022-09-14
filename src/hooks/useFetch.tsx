@@ -18,6 +18,7 @@ export interface HouseHost{
 }
 
 const useFetch = (needFetch : boolean = true) => {
+  
     const [data, setData] = useState([]);
     const [hasError, setHasError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +39,7 @@ const useFetch = (needFetch : boolean = true) => {
           setIsLoading(false);
         }
       }
+
       if (needFetch){
         getData();
       }
