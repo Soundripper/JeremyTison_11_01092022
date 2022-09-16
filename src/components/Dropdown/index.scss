@@ -45,7 +45,9 @@
     display: flex;
     flex-direction: column;
     background-color: rgb(227, 227, 227);
-    transform: translateY(-35px);
+    // transform: translateY(-35px);
+    margin-top : -35px;
+    margin-bottom: 10px;
     & h4{
         margin: 0;
         padding: 0;

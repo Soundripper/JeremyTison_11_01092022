@@ -18,12 +18,10 @@ const Dropdown = ({ dropTitle, dropDetails } : {dropTitle:any, dropDetails:any})
                 <img className="arrow" src={arrow_down} alt={"arrow down"}/>
                 ) : ( <img className="arrow" src={arrow_up} alt={"arrow up"}/> )}
             </div>
-            <div className="dropdDownDetailsContainer">
             {isOpened && (
                 <div className="dropdDownDetails">
                     {dropDetails}
                 </div> )}
-            </div>
         </div>
     )
 }
