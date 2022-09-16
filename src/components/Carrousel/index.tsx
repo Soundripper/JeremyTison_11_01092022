@@ -1,10 +1,20 @@
 import "./index.scss"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { default as leftArrow } from '../../assets/leftArrow.svg';
 import { default as rightArrow } from '../../assets/rightArrow.svg';
 
 
 const Carrousel = ({slides} : any) => {
+
+    const [moreThanOneImage, setMoreThanOneImage] = useState(false);
+    useEffect(() => {
+        if (slides.length > 1){
+            setMoreThanOneImage(true);
+        } 
+        else {
+            setMoreThanOneImage(false);
+        }
+    }, [slides])
     
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -22,9 +32,14 @@ const Carrousel = ({slides} : any) => {
 
     return (
         <div className="carrouselContainer">
-            <div className="leftArrow" onClick={goToPrevious}><img src={leftArrow} alt={"previous"}/></div>
             <div className="imageSlide"><img src={slides[currentIndex]} alt="" /></div>
-            <div className="rightArrow" onClick={goToNext}><img src={rightArrow} alt={"next"}/></div>
+            { moreThanOneImage ? (
+                <div>
+                    <div className="leftArrow" onClick={goToPrevious}><img src={leftArrow} alt={"previous"}/></div>
+                    <div className="rightArrow" onClick={goToNext}><img src={rightArrow} alt={"next"}/></div>
+                </div>
+            ) : (<div></div>)
+            }
         </div>
     )
 }
