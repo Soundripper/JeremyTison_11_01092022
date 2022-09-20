@@ -1,12 +1,11 @@
 import './index.scss'
-// import { useLocation } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Banner from '../../components/Banner'
 import Card from '../../components/Card'
 import Loader from '../../components/Loader'
 
 function Home() {
-  let {data, isLoading} = useFetch();
+  const {data, isLoading} = useFetch();
 
   const getContent = () => {
     if (isLoading){
@@ -14,7 +13,7 @@ function Home() {
     }
     return (
       data.map((house, id) => (
-        <Card house={house} key={id}/>
+        <Card houseEl={house} key={id}/>
       ))
     )
   }

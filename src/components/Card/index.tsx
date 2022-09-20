@@ -2,23 +2,23 @@ import './index.scss'
 import { useNavigate } from "react-router-dom";
 import { HouseElement } from '../../hooks/useFetch';
 interface CardProps {
-    house: HouseElement
+    houseEl: HouseElement
 }
 
 const Card = (props: CardProps) => {
-    const {house} = props
+    const {houseEl} = props;
     const navigate = useNavigate();
     const clickOnCard = () => {
-        navigate((`/HouseDetails/:${house.id}`), {state : house});
+        navigate((`/HouseDetails/:${houseEl.id}`), {state : houseEl});
     }
 
     return(
         <div className = "card" onClick={clickOnCard}>
             <div className = "cardTitle">
-                {house.title}
+                {houseEl.title}
             </div>
             <div className='cardImage'>
-                <img src={house.cover} alt="" />
+                <img src={houseEl.cover} alt="" />
             </div>
         </div>
     )

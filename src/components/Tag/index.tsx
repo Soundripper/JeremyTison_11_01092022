@@ -8,5 +8,4 @@ const Tag = ({ tag } : {tag:any}) => {
     )
 }
 
-
 export default Tag

@@ -34,10 +34,10 @@ const Carrousel = ({slides} : any) => {
         <div className="carrouselContainer">
             <div className="imageSlide"><img src={slides[currentIndex]} alt="" /></div>
             { moreThanOneImage ? (
-                <div>
+                <>
                     <div className="leftArrow" onClick={goToPrevious}><img src={leftArrow} alt={"previous"}/></div>
                     <div className="rightArrow" onClick={goToNext}><img src={rightArrow} alt={"next"}/></div>
-                </div>
+                </>
             ) : (<div></div>)
             }
         </div>

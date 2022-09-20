@@ -40,7 +40,7 @@ function HouseDetails() {
         }
         return (
             <div>
-                <Carrousel slides = {house.pictures}/>
+                <Carrousel slides = {house?.pictures}/>
                 <div className='detailsContainer'>
                     <div className='detaislAndTagsContainer'>
                             <div>
