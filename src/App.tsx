@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import routesArray from "./routerConfig";
 
 const routesConfig = () => {
-  return routesArray.map(({path, component}, key) => <Route path={path} element={component} key={key} />);
+  return routesArray.map((item, index) => <Route path={item.path} element={item.component} key={index} />);
 }
 
 function App() :any {
