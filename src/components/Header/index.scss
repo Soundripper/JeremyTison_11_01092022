@@ -13,18 +13,13 @@
 .logo{
     width: 15vw;
 }
-// @media screen and (min-width= 576px) {
-//     .logo{
-//         width: 30vw;
-//     }
-// }
 
 .navMenu{
     display: flex;
     flex-direction: row;
     gap: 20px;
     margin-left : auto;
-    
+    text-transform: uppercase;
 }
 
 .link{
@@ -54,5 +49,8 @@
         text-decoration: underline;
         font-size : 15px;
         color: $colour-primary;
+    }
+    .navMenu{
+        text-transform: none;
     }
 }

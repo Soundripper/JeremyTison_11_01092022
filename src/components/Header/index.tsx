@@ -8,8 +8,8 @@ function Header() {
         <div className = 'headerContainer'>
             <div><img className="logo" src={logo} alt={"logo Kasa"}/></div>
             <div className = 'navMenu'>
-                <NavLink className={({isActive}) => isActive ? "activeLink": "link" } to="/">ACCUEIL</NavLink>
-                <NavLink className={({isActive}) => isActive ? "activeLink": "link" } to="/about">A PROPOS</NavLink>
+                <NavLink className={({isActive}) => isActive ? "activeLink": "link" } to="/">Accueil</NavLink>
+                <NavLink className={({isActive}) => isActive ? "activeLink": "link" } to="/about">A propos</NavLink>
             </div>
         </div>
     )

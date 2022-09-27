@@ -16,7 +16,7 @@ const Carrousel = ({slides} : any) => {
         }
     }, [slides])
     
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);    
 
     const goToPrevious = () => {
         const isFirstSlide = currentIndex === 0;
@@ -32,11 +32,14 @@ const Carrousel = ({slides} : any) => {
 
     return (
         <div className="carrouselContainer">
-            <div className="imageSlide"><img src={slides[currentIndex]} alt="" /></div>
+            <div className="imageSlide"><img src={slides[currentIndex]} alt="" /><div className="numberOfImages">{currentIndex+1}/{slides.length}</div></div>
             { moreThanOneImage ? (
                 <>
-                    <div className="leftArrow" onClick={goToPrevious}><img src={leftArrow} alt={"previous"}/></div>
-                    <div className="rightArrow" onClick={goToNext}><img src={rightArrow} alt={"next"}/></div>
+                    
+                    <>
+                        <div className="leftArrow" onClick={goToPrevious}><img src={leftArrow} alt={"previous"}/></div>
+                        <div className="rightArrow" onClick={goToNext}><img src={rightArrow} alt={"next"}/></div>
+                    </>
                 </>
             ) : (<div></div>)
             }
