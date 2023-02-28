@@ -1,7 +1,7 @@
 import "./index.scss"
 import { useEffect, useState } from "react"
-import { default as leftArrow } from '../../assets/leftArrow.svg';
-import { default as rightArrow } from '../../assets/rightArrow.svg';
+import { default as leftArrow } from '../../assets/leftArrow.png';
+import { default as rightArrow } from '../../assets/rightArrow.png';
 
 
 const Carrousel = ({slides} : any) => {

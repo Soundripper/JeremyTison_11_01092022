@@ -29,7 +29,7 @@
     cursor: pointer;
     width: 50px;
     position: absolute;
-    top: 35%;
+    top: 40%;
 }
 .leftArrow img, .rightArrow img{
     filter : invert(100%);
@@ -37,9 +37,11 @@
 
 .leftArrow{
     left: 5px;
+    width:25px;
 }
 .rightArrow{
     right: 5px;
+    width:25px;
 }
 @media screen and (min-width : 576px) {
     .leftArrow{
@@ -50,7 +52,7 @@
     }
     .leftArrow, .rightArrow{
         cursor: pointer;
-        width: 100px;
+        width: 25px;
         position: absolute;
         top: 35%;
     }
