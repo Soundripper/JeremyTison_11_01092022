@@ -9,8 +9,8 @@ const routesConfig = () => {
 
 function App() :any {
   return(
-    // <BrowserRouter>
-    <BrowserRouter basename="/ocr/p11_kasa/">
+    <BrowserRouter>
+    {/* <BrowserRouter basename="/ocr/p11_kasa/"> */}
       <div className="mainWrapper">
         <Header />
         <Routes>
