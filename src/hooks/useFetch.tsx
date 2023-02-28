@@ -28,7 +28,7 @@ const useFetch = (needFetch : boolean = true) => {
         setIsLoading(true);
         try {
           setTimeout(async () => {
-            const res = await fetch('/data/logements.json');
+            const res = await fetch('./data/logements.json');
             const data = await res.json();
             setData(() => data);
             setIsLoading(false);

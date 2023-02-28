@@ -1,7 +1,7 @@
 import "./index.scss"
 import { useState } from "react";
-import { default as arrow_down } from '../../assets/arrow_down.svg';
-import { default as arrow_up } from '../../assets/arrow_up.svg';
+import { default as arrow_down } from '../../assets/arrow_down.png';
+import { default as arrow_up } from '../../assets/arrow_up.png';
 
 const Dropdown = ({ dropTitle, dropDetails } : {dropTitle:any, dropDetails:any}) => {
 

@@ -1,5 +1,5 @@
-import { default as starIcon } from '../../assets/star.svg';
-import { default as starFilledIcon } from '../../assets/starFilled.svg';
+import {default as starIcon} from "../../assets/star.png";
+import {default as starFilledIcon} from '../../assets/starFilled.png';
 import './index.scss'
 
 const Rating = ({ratingCount} : {ratingCount : any}) => {
@@ -13,3 +13,4 @@ const Rating = ({ratingCount} : {ratingCount : any}) => {
 }
 
 export default Rating
+
